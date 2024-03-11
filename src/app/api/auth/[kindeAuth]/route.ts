@@ -16,7 +16,7 @@ export default async function handler(
 
   try {
     // Call the handleAuth function or other logic here
-    await handleAuth(req, kindeAuth);
+     handleAuth(req, kindeAuth);
 
     // Send a success response if needed
     res.status(200).json({ success: true });
