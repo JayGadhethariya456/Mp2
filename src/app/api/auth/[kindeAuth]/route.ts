@@ -1,9 +1,10 @@
 // src/app/api/auth/[kindeAuth]/route.ts
 
 import { handleAuth } from '@kinde-oss/kinde-auth-nextjs/server';
-import { NextApiHandler } from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-const handler: NextApiHandler = async (req, res) => {
+// Define the logic as a separate function
+async function authHandler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const { kindeAuth } = req.query;
 
   if (!kindeAuth || typeof kindeAuth !== 'string') {
@@ -22,6 +23,8 @@ const handler: NextApiHandler = async (req, res) => {
     console.error('Error handling auth:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-};
+}
 
-export default handler;
+// Export the handler function for the HTTP methods you want to support
+export const get = authHandler;
+export const post = authHandler;
