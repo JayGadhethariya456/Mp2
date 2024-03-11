@@ -25,6 +25,5 @@ async function authHandler(req: NextApiRequest, res: NextApiResponse): Promise<v
   }
 }
 
-// Export the handler function for the HTTP methods you want to support
-export const get = authHandler;
-export const post = authHandler;
+// Export the handler function as a default export
+export default authHandler;
