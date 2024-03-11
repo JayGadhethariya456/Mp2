@@ -1,12 +1,9 @@
 // src/app/api/auth/[kindeAuth]/route.ts
 
 import { handleAuth } from '@kinde-oss/kinde-auth-nextjs/server';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler } from 'next';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
+const handler: NextApiHandler = async (req, res) => {
   const { kindeAuth } = req.query;
 
   if (!kindeAuth || typeof kindeAuth !== 'string') {
@@ -25,4 +22,6 @@ export default async function handler(
     console.error('Error handling auth:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-}
+};
+
+export default handler;
