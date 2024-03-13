@@ -13,8 +13,10 @@ export default async function handler(
   }
 
   try {
-    // Call the handleAuth function or other logic here
-    handleAuth(req, kindeAuth);
+    // Call the handleAuth function
+    await handleAuth(req, kindeAuth);
+
+    // Send a success response
     res.status(200).json({ success: true });
   } catch (error) {
     console.error('Error handling auth:', error);
